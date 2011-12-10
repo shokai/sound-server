@@ -13,6 +13,6 @@ url = ARGV.shift || 'http://localhost:8080/share/upload'
 
 c = HTTPClient.new
 open(file) do |f|
-  res = c.post_content(url, {'file' => f})
+  res = c.post_content(url, {:file => f, :no_redirect => true})
   puts res
 end

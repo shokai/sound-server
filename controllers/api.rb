@@ -14,8 +14,12 @@ post '/:name/upload' do
       status 500
       @mes = 'upload error'
     else
-      status 200
-      @mes = "#{file_url(name)}/#{fname}"
+      if params[:no_redirect]
+        status 200
+        @mes = "#{file_url(name)}/#{fname}"
+      else
+        redirect "#{app_root}/#{name}/#{fname}"
+      end
     end
   end
 end
