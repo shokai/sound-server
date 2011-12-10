@@ -1,5 +1,5 @@
 
-post '/upload/:name' do
+post '/:name/upload' do
   name = params[:name]
   if !params[:file]
     status 400

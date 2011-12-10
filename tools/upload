@@ -9,7 +9,7 @@ if ARGV.size < 2
 end
 
 file = ARGV.shift
-url = ARGV.shift || 'http://localhost:8080/upload'
+url = ARGV.shift || 'http://localhost:8080/share/upload'
 
 c = HTTPClient.new
 open(file) do |f|
