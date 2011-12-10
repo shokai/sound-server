@@ -11,6 +11,15 @@ get '/:name/upload' do
   haml :sound_upload
 end
 
+get '/:name' do
+  @name = params[:name]
+  @files = Dir.glob("#{file_dir(@name)}/*").map{|i|
+    fname = i.split('/').last
+    {:url => "#{app_root}/#{@name}/#{fname}", :name => fname}
+  }
+  haml :sound_list
+end
+
 get '/:name/*' do
   @name = params[:name]
   @fname = params[:splat].first.first

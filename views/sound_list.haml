@@ -1,0 +1,16 @@
+!!! XHTML
+%html
+  %head
+    %title= @title
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/main.css", :type => 'text/css'}
+  %body
+    %div#content
+      %div#head
+        %a{:href => app_root}= @title
+        %h1= "#{@name}'s sounds"
+        %ul
+          - for file in @files do
+            %li
+              %a{:href => file[:url]}= file[:name]
+              &nbsp;-
+              %span.uploaded_at= Time.at file[:name].scan(/^(\d+)/).first.first.to_i
