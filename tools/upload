@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'uri'
+require 'httpclient'
+
+if ARGV.size < 2
+  puts "#{$0} test.wav http://localhost:8080/#{ENV['USER']}/upload"
+  exit 1
+end
+
+file = ARGV.shift
+url = ARGV.shift || 'http://localhost:8080/upload'
+
+c = HTTPClient.new
+open(file) do |f|
+  res = c.post_content(url, {'file' => f})
+  puts res
+end
