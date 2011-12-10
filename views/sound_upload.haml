@@ -1,0 +1,19 @@
+!!! XHTML
+%html
+  %head
+    %title= @title
+    :javascript
+      var app_root = "#{app_root}";
+    %script{:type => 'text/javascript', :src => "#{app_root}/js/jquery.js"}
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/main.css", :type => 'text/css'}
+  %body
+    %div#content
+      %div#head
+        %a{:href => app_root}= @title
+        %h2 Upload Sound File to "#{@name}"
+        %form{:method => :post, :action => "#{app_root}/#{@name}/upload",
+              :enctype => 'multipart/form-data'}
+          %div
+            file : 
+            %input{:type => :file, :name => :file}
+            %input{:type => :submit, :name => :upload, :value => 'Upload!'}
