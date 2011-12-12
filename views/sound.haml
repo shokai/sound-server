@@ -7,7 +7,7 @@
     %div#content
       %div#head
         %a{:href => app_root}= @title
-        %h1= "#{@name}/#{@s.file}"
+        %h1= "#{@user}/#{@s.file}"
         %audio{:src => "#{file_url}/#{@s.file}", :controls => true}
         %ul
           %li uploaded at : #{Time.at @s.uploaded_at}

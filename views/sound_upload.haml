@@ -10,8 +10,8 @@
     %div#content
       %div#head
         %a{:href => app_root}= @title
-        %h2 Upload Sound File to "#{@name}"
-        %form{:method => :post, :action => "#{app_root}/#{@name}/upload",
+        %h2 Upload Sound File to "#{@user}"
+        %form{:method => :post, :action => "#{app_root}/#{@user}/upload",
               :enctype => 'multipart/form-data'}
           %div
             file : 

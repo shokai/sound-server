@@ -6,8 +6,8 @@ get '/' do
   haml :index
 end
 
-get '/:name/upload' do
-  @name = params[:name]
+get '/:user/upload' do
+  @user = params[:user]
   haml :sound_upload
 end
 
