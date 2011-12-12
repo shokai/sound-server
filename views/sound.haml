@@ -7,9 +7,9 @@
     %div#content
       %div#head
         %a{:href => app_root}= @title
-        %h1= "#{@name}/#{@fname}"
-        %audio{:src => "#{file_url(@name)}/#{@fname}", :controls => true}
+        %h1= "#{@name}/#{@s.file}"
+        %audio{:src => "#{file_url}/#{@s.file}", :controls => true}
         %ul
-          %li uploaded at : #{Time.at @fname.scan(/^(\d)+/).first.first.to_i}
+          %li uploaded at : #{Time.at @s.uploaded_at}
           %li
-            %a{:href => "#{file_url(@name)}/#{@fname}"} download
+            %a{:href => "#{file_url}/#{@s.file}"} download

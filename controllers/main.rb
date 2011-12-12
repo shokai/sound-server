@@ -11,23 +11,20 @@ get '/:name/upload' do
   haml :sound_upload
 end
 
-get '/:name' do
-  @name = params[:name]
-  @files = Dir.glob("#{file_dir(@name)}/*").map{|i|
-    fname = i.split('/').last
-    {:url => "#{app_root}/#{@name}/#{fname}", :name => fname}
-  }
+get '/:user' do
+  @user = params[:user]
+  @sounds = Sound.where({:user => @user}).desc(:uploaded_at)
   haml :sound_list
 end
 
-get '/:name/*' do
-  @name = params[:name]
-  @fname = params[:splat].first.first
-  if @fname.to_s.size < 1 or !File.exists?("#{file_dir(@name)}/#{@fname}")
+get '/:user/:hex_id' do
+  @user = params[:user]
+  @hex_id = params[:hex_id]
+  @s = Sound.where({:user => @user, :hex_id => @hex_id}).first
+  unless @s
     status 404
     @mes = 'not found'
   else
-    content_type = 'text/html'
     haml :sound
   end
 end

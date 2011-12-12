@@ -7,10 +7,10 @@
     %div#content
       %div#head
         %a{:href => app_root}= @title
-        %h1= "#{@name}'s sounds"
+        %h1= "#{@user}'s sounds"
         %ul
-          - for file in @files do
+          - for s in @sounds do
             %li
-              %a{:href => file[:url]}= file[:name]
+              %a{:href => "#{app_root}/#{@user}/#{s.hex_id}"}= s.file
               &nbsp;-
-              %span.uploaded_at= Time.at file[:name].scan(/^(\d+)/).first.first.to_i
+              %span.uploaded_at= Time.at s.uploaded_at
