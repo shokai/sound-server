@@ -21,7 +21,7 @@ post '/:user/upload_text' do
       s.file_type = @@conf['file_type']
       fpath = "#{file_dir}/#{s.file}"
       unless File.exists? fpath
-        puts cmd = "ffmpeg -y -i #{tmp_fname} -ac 2 -ar 48000 -ab 96 #{fpath}"
+        puts cmd = "#{@@conf['ffmpeg']} -y -i #{tmp_fname} -ac 2 -ar 48000 -ab 96 #{fpath}"
         system cmd
       end
       File.delete tmp_fname if File.exists? tmp_fname
@@ -73,7 +73,7 @@ post '/:user/upload' do
         fpath = "#{file_dir}/#{s.file}"
         unless File.exists? fpath
           if file_type != 'mp3'
-            puts cmd = "ffmpeg -y -i #{tmp_fname} -sameq #{fpath}"
+            puts cmd = "#{@@conf['ffmpeg']} -y -i #{tmp_fname} -sameq #{fpath}"
             system cmd
           else
             File.rename(tmp_fname, fpath)
