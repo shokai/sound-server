@@ -1,6 +1,7 @@
 title : 'sound server'
 default_name : 'default'
 file_type : 'mp3'
+saykana : '/usr/local/bin/saykana'
 
 mongo :
   server : '127.0.0.1'

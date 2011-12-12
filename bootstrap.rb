@@ -9,6 +9,7 @@ require 'fileutils'
 require 'mongoid'
 require 'digest/md5'
 require 'mini_exiftool'
+require 'igo-ruby'
 
 begin
   @@conf = YAML::load open(File.dirname(__FILE__)+'/config.yaml').read

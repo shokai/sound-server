@@ -4,7 +4,9 @@
     %title= @title
     :javascript
       var app_root = "#{app_root}";
+      var user = "#{@user}";
     %script{:type => 'text/javascript', :src => "#{app_root}/js/jquery.js"}
+    %script{:type => 'text/javascript', :src => "#{app_root}/js/sound_upload.js"}
     %link{:rel => 'stylesheet', :href => "#{app_root}/css/main.css", :type => 'text/css'}
   %body
     %div#content
@@ -17,3 +19,5 @@
             file : 
             %input{:type => :file, :name => :file}
             %input{:type => :submit, :name => :upload, :value => 'Upload!'}
+        %h2 Upload Speech
+        %input{:type => :text, :id => 'speech', :speech => true, 'x-webkit-speech' => true}
