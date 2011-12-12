@@ -7,6 +7,8 @@
     %div#content
       %div#head
         %a{:href => app_root}= @title
+        %h2
+          %a{:href => "#{app_root}/#{@user}/upload"} upload
         %h1= "#{@user}'s sounds"
         %ul
           - for s in @sounds do

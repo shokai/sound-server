@@ -7,6 +7,8 @@
     %div#content
       %div#head
         %a{:href => app_root}= @title
+        %div
+          %a{:href => "#{app_root}/#{@user}"}= "#{@user}'s list"
         %h1= "#{@user}/#{@s.file}"
         %audio{:src => "#{file_url}/#{@s.file}", :controls => true}
         %ul
