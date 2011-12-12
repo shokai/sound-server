@@ -20,8 +20,9 @@ post '/:user/upload' do
       s.user = user
       exif = MiniExiftool.new tmp_fname
       s.mime_type = exif['mime_type']
-      s.file_type = exif['FileType'].downcase
       s.length = exif['Duration'].to_f
+      file_type = exif['FileType'].downcase
+      s.file_type = @@conf['file_type']
       unless s.mime_type =~ /^audio\/.+/i
         status 400
         @mes = "#{s.mime_type} is not audio file"
@@ -30,10 +31,16 @@ post '/:user/upload' do
         s.file = "#{s.hex_id}.#{s.file_type}"
         fpath = "#{file_dir}/#{s.file}"
         unless File.exists? fpath
-          File.rename(tmp_fname, fpath)
+          if file_type != 'mp3'
+            puts cmd = "ffmpeg -y -i #{tmp_fname} -sameq #{fpath}"
+            system cmd
+          else
+            File.rename(tmp_fname, fpath)
+          end
         else
           File.delete(tmp_fname)
         end
+
         s.save
         if params[:no_redirect]
           status 200

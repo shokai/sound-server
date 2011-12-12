@@ -1,10 +1,11 @@
 Sound Server
 ============
-
+store sounds, encode, connect, generate
 
 Install Dependencies
 --------------------
 
+    % brew install ffmpeg exiftool
     % gem install bundler
     % bundle install
 
