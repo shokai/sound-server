@@ -1,0 +1,33 @@
+!!! XHTML
+- @user = @@conf['default_name']
+%html
+  %head
+    %title= @title
+    %link{:rel => 'stylesheet', :href => "#{app_root}/css/main.css", :type => 'text/css'}
+  %body
+    %div#content
+      %div#head
+        %a{:href => app_root}= @title
+        %h1 API
+        %h2 upload
+        %ul
+          %li
+            %a{:href => "#{app_root}/#{@user}/upload"}= "#{app_root}/#{@user}/upload"
+          %li HTTP-POST (file multipart upload)
+          %li
+            %a{:href => 'https://github.com/shokai/sound-server/blob/master/tools/upload'} sample
+        %h2 list
+        %ul
+          %li
+            %a{:href => "#{app_root}/#{@user}.json"}= "#{app_root}/#{@user}.json"
+          %li HTTP-GET, json
+        %h2 permalink
+        %ul
+          %li
+            %a{:href => "#{app_root}/#{@user}/(hex_id).json"}= "#{app_root}/#{@user}/(hex_id).json"
+          %li HTTP-GET, json
+        %hr
+        %div
+          source code : 
+          - src_url = 'https://github.com/shokai/sound-server'
+          %a{:href => src_url} #{src_url}

@@ -1,4 +1,5 @@
 !!! XHTML
+- @user = @@conf['default_name']
 %html
   %head
     %title= @title
@@ -14,9 +15,10 @@
         %h2 Upload
         %div
           your name : 
-          %input{:type => :text, :id => 'upload_name', :value => @@conf['default_name']}
+          %input{:type => :text, :id => 'upload_name', :value => @user}
           %input{:type => :button, :id => 'btn_upload', :value => 'Go'}
         %h2 API
+        %a{:href => "#{app_root}/api"} API list
         %hr
         %div
           source code : 

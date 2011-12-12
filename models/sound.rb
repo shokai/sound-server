@@ -10,8 +10,12 @@ class Sound
   def to_hash
     {
       :hex_id => hex_id,
+      :user => user,
       :uploaded_at => uploaded_at,
+      :file => file,
+      :file_type => file_type,
       :mime_type => mime_type,
+      :length => length
     }
   end
 end
